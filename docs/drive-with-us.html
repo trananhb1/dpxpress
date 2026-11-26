@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drive with us | DP Xpress</title>
+  <meta name="description" content="Delivery drivers: apply to join the DP Xpress team.">
+  <link rel="preload" href="/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script src="/nav.js" defer></script>
+  <script src="/form.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="DP Xpress home">DP<span>Xpress</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/for-couriers.html">For couriers</a></li>
+        <li class="nav-cta"><a href="/drive-with-us.html" aria-current="page">Drive with us</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="page-head"><div class="wrap">
+      <p class="kicker">Drive with us</p>
+      <h1>Join the DP Xpress driving team</h1>
+      <p>We deliver parcels for StarTrack and other courier companies. If you are a reliable driver, we want to hear from you.</p>
+      <div class="btn-row"><a class="btn btn-signal" href="#apply">Go to the application form</a></div>
+    </div></div>
+
+    <section>
+      <div class="wrap form-layout">
+        <div>
+          
+          <h2>How to apply</h2>
+          <p>Tell us about your licence, vehicle and availability. We will contact you about current work.</p>
+          <p class="form-note">Questions first? Call <a href="tel:+61431644769">0431 644 769</a>.</p>
+        </div>
+
+        <form class="panel" id="apply" method="post" action="/api/driver" data-fallback>
+          <fieldset>
+            <legend>About you</legend>
+            <div class="fields">
+              <div class="field"><label for="d-name">Full name <span class="req" aria-hidden="true">*</span></label><input id="d-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+              <div class="field"><label for="d-suburb">Suburb you live in <span class="req" aria-hidden="true">*</span></label><input id="d-suburb" name="suburb" type="text" autocomplete="address-level2" required maxlength="120"></div>
+              <div class="field"><label for="d-email">Email <span class="req" aria-hidden="true">*</span></label><input id="d-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+              <div class="field"><label for="d-phone">Phone <span class="req" aria-hidden="true">*</span></label><input id="d-phone" name="phone" type="tel" autocomplete="tel" required maxlength="20" pattern="[0-9 +\(\)\-]{8,20}"></div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Vehicle and licence</legend>
+            <div class="fields">
+              <div class="field full" role="radiogroup" aria-labelledby="d-own-label">
+                <span class="label" id="d-own-label">Do you have your own vehicle? <span class="req" aria-hidden="true">*</span></span>
+                <div class="choice">
+                  <label><input type="radio" name="own_vehicle" value="yes" required> Yes</label>
+                  <label><input type="radio" name="own_vehicle" value="no"> No</label>
+                </div>
+              </div>
+              <div class="field"><label for="d-vtype">Vehicle type</label>
+                <select id="d-vtype" name="vehicle_type" aria-describedby="d-vtype-hint">
+                  <option value="">Choose one</option>
+                  <option value="car">Car</option>
+                  <option value="ute">Ute</option>
+                  <option value="van-small">Small van</option>
+                  <option value="van-1t">Van, 1 tonne</option>
+                  <option value="van-2t">Van, 2 tonne</option>
+                  <option value="truck-3t">Truck, 3 tonne or larger</option>
+                  <option value="none">No vehicle</option>
+                </select><span class="hint" id="d-vtype-hint">If you have one</span></div>
+              <div class="field"><label for="d-licence">Licence class <span class="req" aria-hidden="true">*</span></label>
+                <select id="d-licence" name="licence" required>
+                  <option value="">Choose one</option>
+                  <option value="C">C (car)</option>
+                  <option value="LR">LR (light rigid)</option>
+                  <option value="MR">MR (medium rigid)</option>
+                  <option value="HR">HR (heavy rigid)</option>
+                  <option value="HC">HC (heavy combination)</option>
+                  <option value="MC">MC (multi-combination)</option>
+                  <option value="provisional">Provisional or learner</option>
+                </select></div>
+              <div class="field full" role="radiogroup" aria-labelledby="d-abn-label">
+                <span class="label" id="d-abn-label">Do you have an ABN? <span class="req" aria-hidden="true">*</span></span>
+                <div class="choice">
+                  <label><input type="radio" name="abn" value="yes" required> Yes</label>
+                  <label><input type="radio" name="abn" value="no"> No</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Work</legend>
+            <div class="fields">
+              <div class="field"><label for="d-avail">Availability <span class="req" aria-hidden="true">*</span></label>
+                <select id="d-avail" name="availability" required>
+                  <option value="">Choose one</option>
+                  <option value="full-time">Full time, weekdays</option>
+                  <option value="part-time">Part time</option>
+                  <option value="weekends">Weekends</option>
+                  <option value="peak">Peak periods only</option>
+                  <option value="flexible">Flexible</option>
+                </select></div>
+              <div class="field"><label for="d-exp">Delivery driving experience <span class="req" aria-hidden="true">*</span></label>
+                <select id="d-exp" name="experience" required>
+                  <option value="">Choose one</option>
+                  <option value="none">None yet</option>
+                  <option value="under-1">Less than a year</option>
+                  <option value="1-3">1 to 3 years</option>
+                  <option value="over-3">More than 3 years</option>
+                </select></div>
+              <div class="field full"><label for="d-message">Tell us about yourself</label><textarea id="d-message" name="message" maxlength="3000" aria-describedby="d-message-hint"></textarea><span class="hint" id="d-message-hint">Couriers you have driven for, days you can start, anything else</span></div>
+            </div>
+          </fieldset>
+          <div class="hp" aria-hidden="true"><label for="d-website">Leave this empty</label><input id="d-website" name="hp_check" type="text" tabindex="-1" autocomplete="off"></div>
+          <p><label class="consent"><input type="checkbox" name="consent" value="yes" required> <span>I agree to DP Xpress using these details to assess my application and contact me, as set out in the <a href="/privacy.html">privacy policy</a>. <span class="req" aria-hidden="true">*</span></span></label></p>
+          <div class="form-fallback" role="alert" hidden><strong>Your form could not be sent online yet.</strong> Nothing you typed has been lost. Please call <a href="tel:+61431644769">0431 644 769</a> or email <a href="mailto:dpphan@hotmail.com">dpphan@hotmail.com</a> with these details.</div>
+          <button class="btn btn-signal" type="submit">Send application</button>
+          <p class="form-note">Fields marked <span class="req">*</span> are required. If the form does not go through, call <a href="tel:+61431644769">0431 644 769</a> or email <a href="mailto:dpphan@hotmail.com">dpphan@hotmail.com</a>.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <h2>DP Xpress</h2>
+        <p>Last-mile parcel delivery and logistics services. Main partner: StarTrack.</p>
+      </div>
+      <div>
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/for-couriers.html">For couriers</a></li>
+          <li><a href="/drive-with-us.html">Drive with us</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li>Phone: <a href="tel:+61431644769">0431 644 769</a></li>
+          <li>Email: <a href="mailto:dpphan@hotmail.com">dpphan@hotmail.com</a></li>
+          <li><a href="/contact.html">All contact details</a></li>
+          <li><a href="/privacy.html">Privacy policy</a></li>
+        </ul>
+      </div>
+      <p class="legal">&copy; DP Phan Pty Ltd &middot; ABN 60 102 886 288</p>
+    </div>
+  </footer>
+</body>
+</html>

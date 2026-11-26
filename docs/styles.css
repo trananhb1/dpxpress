@@ -1,0 +1,203 @@
+/* DP Xpress draft. One stylesheet, no build step.
+   Palette: ink + paper + hi-vis yellow. Yellow is only ever a BACKGROUND behind ink
+   (11.25:1). Never use yellow as text on paper/white (1.41:1, fails AA). */
+@font-face { font-family: "Archivo"; src: url("/fonts/archivo-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("/fonts/archivo-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("/fonts/archivo-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+
+:root {
+  --ink: #14171c;
+  --ink-2: #22262d;
+  --paper: #f3f1ea;
+  --white: #ffffff;
+  --signal: #ffc400;
+  --grey: #5a5f66;
+  --on-dark-muted: #b9bcc2;
+  --rule: #14171c;
+  --err: #b3261e;
+  --wrap: 72rem;
+  --pad: clamp(1rem, 4vw, 2rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: "Archivo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+}
+img { max-width: 100%; height: auto; }
+a { color: inherit; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; box-shadow: 0 0 0 6px var(--signal); }
+
+h1, h2, h3 { line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 0.5em; font-weight: 800; }
+h1 { font-size: clamp(2.25rem, 6vw, 4rem); }
+h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); }
+h3 { font-size: 1.2rem; font-weight: 600; letter-spacing: 0; }
+p { margin: 0 0 1em; max-width: 62ch; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--pad); }
+.skip { position: absolute; left: -999px; top: 0; background: var(--signal); padding: 0.6rem 1rem; z-index: 10; font-weight: 600; }
+.skip:focus { left: 0.5rem; top: 0.5rem; }
+
+/* Placeholders for facts the client must supply. Loud on purpose. */
+.ph { background: var(--signal); color: var(--ink); font-weight: 600; padding: 0 0.25em; border-radius: 2px; }
+
+/* ---------- Header ---------- */
+.site-header { background: var(--ink); color: var(--white); border-bottom: 4px solid var(--signal); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4.25rem; flex-wrap: wrap; }
+.brand { font-weight: 800; font-size: 1.35rem; letter-spacing: 0.02em; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+.brand span { background: var(--signal); color: var(--ink); padding: 0 0.3em; margin-left: 0.15em; }
+.nav-toggle { display: none; }
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.site-nav a { text-decoration: none; font-weight: 600; font-size: 0.98rem; display: inline-block; padding: 0.4rem 0; border-bottom: 3px solid transparent; }
+.site-nav a:hover { border-bottom-color: var(--on-dark-muted); }
+.site-nav a[aria-current="page"] { border-bottom-color: var(--signal); }
+.site-nav .nav-cta a { background: var(--signal); color: var(--ink); padding: 0.4rem 0.75rem; border: 0; }
+
+@media (max-width: 760px) {
+  .site-header .wrap { padding-top: 0.6rem; padding-bottom: 0.6rem; }
+  .site-nav { width: 100%; }
+  .site-nav ul { flex-direction: column; gap: 0; }
+  .site-nav li { border-top: 1px solid #3a3f47; }
+  .site-nav a { display: block; padding: 0.8rem 0; }
+  .site-nav .nav-cta a { display: inline-block; margin: 0.6rem 0; padding: 0.6rem 0.9rem; }
+  /* With JS, collapse the menu behind a toggle. Without JS it stays open. */
+  .js .nav-toggle {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent; color: var(--white); border: 2px solid var(--white);
+    font: inherit; font-weight: 600; padding: 0.4rem 0.8rem; cursor: pointer; min-height: 44px;
+  }
+  .js .site-nav { display: none; }
+  .js .site-header.open .site-nav { display: block; }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block; font: inherit; font-weight: 600; text-decoration: none;
+  padding: 0.85rem 1.3rem; border: 2px solid var(--ink); cursor: pointer; min-height: 44px;
+}
+.btn-signal { background: var(--signal); color: var(--ink); border-color: var(--signal); }
+.btn-signal:hover { border-color: var(--ink); }
+.btn-ghost { background: transparent; color: inherit; border-color: currentColor; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+/* ---------- Sections ---------- */
+section { padding: clamp(2.5rem, 7vw, 5rem) 0; }
+.band-ink { background: var(--ink); color: var(--white); }
+.band-ink p, .band-ink li { color: var(--on-dark-muted); }
+.band-ink .ph { color: var(--ink); }
+.band-white { background: var(--white); }
+.kicker { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 0.75rem; }
+.band-ink .kicker { color: var(--signal); }
+.lead { font-size: 1.2rem; }
+
+.hero { padding-top: clamp(2rem, 6vw, 4.5rem); }
+.hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+.page-head { padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(1.5rem, 4vw, 2.5rem); border-bottom: 2px solid var(--rule); }
+.page-head p { font-size: 1.15rem; }
+
+/* Partner strip: plain text, no logos (trademark permission not confirmed). */
+.partner-strip { border-top: 2px solid var(--rule); border-bottom: 2px solid var(--rule); padding: 1.1rem 0; }
+.partner-strip .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; align-items: baseline; }
+.partner-strip strong { font-size: 1.15rem; }
+
+/* Numbered grid: ruled cells, not floating cards. */
+.grid { display: grid; gap: 0; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); border-top: 2px solid var(--rule); border-left: 2px solid var(--rule); }
+.cell { padding: 1.5rem; border-right: 2px solid var(--rule); border-bottom: 2px solid var(--rule); background: var(--white); }
+.cell .num { font-weight: 800; font-size: 0.9rem; display: inline-block; background: var(--ink); color: var(--white); padding: 0.1rem 0.45rem; margin-bottom: 0.9rem; }
+.cell p:last-child { margin-bottom: 0; }
+.band-ink .grid, .band-ink .cell { border-color: #3a3f47; }
+.band-ink .cell { background: var(--ink-2); }
+.band-ink .cell .num { background: var(--signal); color: var(--ink); }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+.ticks { list-style: none; padding: 0; margin: 0 0 1rem; }
+.ticks li { padding: 0.55rem 0 0.55rem 1.6rem; border-bottom: 1px solid #d8d4c8; position: relative; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 1.05rem; width: 0.7rem; height: 0.7rem; background: var(--signal); border: 2px solid var(--ink); }
+.band-ink .ticks li { border-color: #3a3f47; }
+
+/* Two-door CTA block */
+.doors { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--rule); }
+.door { padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--white); }
+.door + .door { border-left: 2px solid var(--rule); background: var(--signal); }
+.door p { max-width: 40ch; }
+
+/* Photos (Pexels, see CREDITS.md). Explicit width/height on every <img> prevents layout shift. */
+.hero-photo { position: relative; color: var(--white); background: var(--ink); overflow: hidden; }
+.hero-photo .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+/* Scrim so white text stays readable over the bright sky in the photo. */
+.hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,23,28,.88) 0%, rgba(20,23,28,.72) 40%, rgba(20,23,28,.1) 85%); }
+.hero-copy { position: relative; z-index: 1; padding-top: clamp(3.5rem, 11vw, 8rem); padding-bottom: clamp(3.5rem, 11vw, 8rem); }
+.hero-copy h1 { max-width: 13ch; }
+.hero-copy .lead { max-width: 40ch; color: #e9e7e1; }
+.hero-photo .kicker { color: var(--signal); }
+.hero-photo .ph { color: var(--ink); }
+.photo-band { line-height: 0; }
+.photo-band img { width: 100%; height: clamp(14rem, 38vw, 30rem); object-fit: cover; object-position: 50% 40%; }
+.door-img { display: block; width: calc(100% + 2 * clamp(1.5rem, 4vw, 2.5rem)); max-width: none; height: auto; aspect-ratio: 16 / 9; object-fit: cover; margin: calc(-1 * clamp(1.5rem, 4vw, 2.5rem)) calc(-1 * clamp(1.5rem, 4vw, 2.5rem)) 1.5rem; border-bottom: 2px solid var(--rule); }
+.side-img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border: 2px solid var(--rule); }
+@media (max-width: 760px) {
+  .hero-photo::after { background: rgba(20,23,28,.74); }
+}
+
+/* ---------- Forms ---------- */
+.form-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+form.panel { background: var(--white); border: 2px solid var(--rule); padding: clamp(1.25rem, 3vw, 2rem); }
+fieldset { border: 0; padding: 0; margin: 0 0 1.5rem; }
+legend { font-weight: 800; font-size: 1.15rem; margin-bottom: 0.75rem; padding: 0; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; }
+.field { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+label, .label { font-weight: 600; font-size: 0.95rem; }
+.req { color: var(--err); }
+.hint { font-size: 0.85rem; color: var(--grey); }
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], select, textarea {
+  font: inherit; color: var(--ink); background: var(--white);
+  border: 2px solid var(--grey); border-radius: 0; padding: 0.65rem 0.75rem; width: 100%; min-height: 44px;
+}
+textarea { min-height: 7.5rem; resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--ink); }
+input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: var(--err); background: #fdf3f2; }
+.choice { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+.choice label { font-weight: 400; display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px; }
+.choice input, .consent input { width: 1.25rem; height: 1.25rem; accent-color: var(--ink); flex: none; }
+.consent { display: flex; gap: 0.7rem; align-items: flex-start; font-weight: 400; }
+.consent input { margin-top: 0.2rem; }
+/* Honeypot: off-screen, not type=hidden, so bots fill it and people never see it. */
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.form-note { font-size: 0.9rem; color: var(--grey); margin-top: 1rem; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--ink); color: var(--on-dark-muted); padding: 2.5rem 0 2rem; font-size: 0.95rem; }
+.site-footer .wrap { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 1.5rem 2rem; }
+.site-footer h2 { color: var(--white); font-size: 1rem; margin-bottom: 0.6rem; }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { padding: 0.15rem 0; }
+.site-footer a { color: var(--white); }
+.site-footer .legal { grid-column: 1 / -1; border-top: 1px solid #3a3f47; padding-top: 1rem; margin: 0; max-width: none; }
+.site-footer .ph { color: var(--ink); }
+
+.prose h2 { font-size: 1.4rem; margin-top: 2rem; }
+.prose { max-width: 48rem; }
+.draft-banner { background: var(--signal); color: var(--ink); text-align: center; font-size: 0.85rem; font-weight: 600; padding: 0.35rem var(--pad); }
+
+@media (max-width: 860px) {
+  .hero-grid, .split, .form-layout, .doors { grid-template-columns: 1fr; }
+  .door + .door { border-left: 0; border-top: 2px solid var(--rule); }
+  .site-footer .wrap { grid-template-columns: 1fr 1fr; }
+  .site-footer .wrap > :first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .fields { grid-template-columns: 1fr; }
+  .btn-row .btn { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* Shown by form.js when the POST fails (e.g. no backend yet). Keeps what the user typed. */
+.form-fallback { border: 2px solid var(--ink); background: var(--signal); color: var(--ink); padding: 1rem; margin: 0 0 1rem; }
+.form-fallback a { font-weight: 600; }

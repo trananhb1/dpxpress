@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For couriers: outsource runs | DP Xpress</title>
+  <meta name="description" content="Courier companies: outsource runs, routes or overflow to DP Xpress. Send an enquiry.">
+  <link rel="preload" href="/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script src="/nav.js" defer></script>
+  <script src="/form.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="DP Xpress home">DP<span>Xpress</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/for-couriers.html" aria-current="page">For couriers</a></li>
+        <li class="nav-cta"><a href="/drive-with-us.html">Drive with us</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="page-head"><div class="wrap">
+      <p class="kicker">For couriers</p>
+      <h1>Outsource runs to DP Xpress</h1>
+      <p>Short of drivers, or got more runs than vans? Tell us what you need covered.</p>
+    </div></div>
+
+    <section>
+      <div class="wrap form-layout">
+        <div>
+          <h2>How it works</h2>
+          <div class="grid" style="grid-template-columns:1fr">
+            <div class="cell"><span class="num">01</span><h3>Send the enquiry</h3><p>Areas, runs per week, vehicle type and when you want to start.</p></div>
+            <div class="cell"><span class="num">02</span><h3>We check capacity</h3><p>We look at drivers and vehicles we can put on the work.</p></div>
+            <div class="cell"><span class="num">03</span><h3>We agree the work</h3><p>Rates, start date and how the runs are handed over.</p></div>
+          </div>
+          <p class="form-note">Prefer to call? <a href="tel:+61431644769">0431 644 769</a></p>
+        </div>
+
+        <form class="panel" method="post" action="/api/courier" data-fallback>
+          <fieldset>
+            <legend>Your company</legend>
+            <div class="fields">
+              <div class="field"><label for="c-company">Company name <span class="req" aria-hidden="true">*</span></label><input id="c-company" name="company" type="text" autocomplete="organization" required maxlength="120"></div>
+              <div class="field"><label for="c-contact">Contact name <span class="req" aria-hidden="true">*</span></label><input id="c-contact" name="contact" type="text" autocomplete="name" required maxlength="120"></div>
+              <div class="field"><label for="c-email">Email <span class="req" aria-hidden="true">*</span></label><input id="c-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+              <div class="field"><label for="c-phone">Phone <span class="req" aria-hidden="true">*</span></label><input id="c-phone" name="phone" type="tel" autocomplete="tel" required maxlength="20" pattern="[0-9 +\(\)\-]{8,20}" aria-describedby="c-phone-hint"><span class="hint" id="c-phone-hint">Australian mobile or landline</span></div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>The work</legend>
+            <div class="fields">
+              <div class="field full"><label for="c-areas">Areas or suburbs <span class="req" aria-hidden="true">*</span></label><input id="c-areas" name="areas" type="text" required maxlength="300" aria-describedby="c-areas-hint"><span class="hint" id="c-areas-hint">Depot and delivery areas, e.g. depot suburb and the postcodes covered</span></div>
+              <div class="field"><label for="c-volume">Runs per week <span class="req" aria-hidden="true">*</span></label><input id="c-volume" name="volume" type="text" required maxlength="120" aria-describedby="c-volume-hint"><span class="hint" id="c-volume-hint">Or parcels per day, if easier</span></div>
+              <div class="field"><label for="c-vehicle">Vehicle type needed <span class="req" aria-hidden="true">*</span></label>
+                <select id="c-vehicle" name="vehicle" required>
+                  <option value="">Choose one</option>
+                  <option value="car">Car or small van</option>
+                  <option value="van-1t">Van, 1 tonne</option>
+                  <option value="van-2t">Van, 2 tonne</option>
+                  <option value="truck-3t">Truck, 3 tonne or larger</option>
+                  <option value="mixed">Mix of vehicles</option>
+                  <option value="unsure">Not sure yet</option>
+                </select></div>
+              <div class="field"><label for="c-start">Start date</label><input id="c-start" name="start_date" type="date"></div>
+              <div class="field full"><label for="c-message">Anything else</label><textarea id="c-message" name="message" maxlength="3000" aria-describedby="c-message-hint"></textarea><span class="hint" id="c-message-hint">Run times, how long you need cover, special handling</span></div>
+            </div>
+          </fieldset>
+          <div class="hp" aria-hidden="true"><label for="c-website">Leave this empty</label><input id="c-website" name="hp_check" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="form-fallback" role="alert" hidden><strong>Your form could not be sent online yet.</strong> Nothing you typed has been lost. Please call <a href="tel:+61431644769">0431 644 769</a> or email <a href="mailto:dpphan@hotmail.com">dpphan@hotmail.com</a> with these details.</div>
+          <button class="btn btn-signal" type="submit">Send enquiry</button>
+          <p class="form-note">Fields marked <span class="req">*</span> are required. See our <a href="/privacy.html">privacy policy</a>. If the form does not go through, call <a href="tel:+61431644769">0431 644 769</a> or email <a href="mailto:dpphan@hotmail.com">dpphan@hotmail.com</a>.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <h2>DP Xpress</h2>
+        <p>Last-mile parcel delivery and logistics services. Main partner: StarTrack.</p>
+      </div>
+      <div>
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/for-couriers.html">For couriers</a></li>
+          <li><a href="/drive-with-us.html">Drive with us</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li>Phone: <a href="tel:+61431644769">0431 644 769</a></li>
+          <li>Email: <a href="mailto:dpphan@hotmail.com">dpphan@hotmail.com</a></li>
+          <li><a href="/contact.html">All contact details</a></li>
+          <li><a href="/privacy.html">Privacy policy</a></li>
+        </ul>
+      </div>
+      <p class="legal">&copy; DP Phan Pty Ltd &middot; ABN 60 102 886 288</p>
+    </div>
+  </footer>
+</body>
+</html>

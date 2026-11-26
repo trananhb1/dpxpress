@@ -1,0 +1,7 @@
+FACTS_NEEDED.md
+RESEARCH.md
+CREDITS.md
+screenshots/
+node_modules/
+.wrangler/
+*.log
