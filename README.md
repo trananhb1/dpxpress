@@ -22,7 +22,7 @@ The header and footer are copied into every page. If you change the nav, change 
 
 ## Forms today (no backend)
 The forms POST to `/api/courier` and `/api/driver`. GitHub Pages can't accept a POST, so for now:
-- **With JS** (`form.js`), the browser's own validation runs first. Then the form is sent with `fetch`. If the response is anything other than a redirect to `/thanks.html`, the form stays filled in and a yellow box tells the person to call 0431 644 769 or email dpphan@hotmail.com. This was tested locally against a static server, which answered the POST with 501.
+- **With JS** (`form.js`), the browser's own validation runs first. Then the form is sent with `fetch`. If the response is anything other than a redirect to `/thanks.html`, the form stays filled in and a yellow box tells the person to call 0433 573 850 or email dpxpresssupport@gmail.com. This was tested locally against a static server, which answered the POST with 501.
 - **Without JS**, the POST lands on GitHub's error page. Every form has a visible line under it with the phone number and email for this case.
 
 No third-party form service is used.
